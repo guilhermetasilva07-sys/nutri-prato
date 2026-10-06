@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nutri Prato – comida, dieta e treino</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>Nutri Prato</h1>
+  <nav id="abas">
+    <button data-t="prato" class="on">Foto do prato</button>
+    <button data-t="dieta">Diário e metas</button>
+    <button data-t="treino">Treino semanal</button>
+  </nav>
+</header>
+
+<main>
+<section id="prato">
+  <div class="col">
+    <h2>1. Mostre sua comida</h2>
+    <label class="foto">
+      <input type="file" id="arq" accept="image/*" capture="environment">
+      <img id="img" alt="" hidden>
+      <span id="dica">Toque para tirar uma foto ou escolher da galeria</span>
+    </label>
+    <p id="status" class="nota"></p>
+    <h2>2. Confirme os alimentos</h2>
+    <div id="sugestoes" class="chips"></div>
+    <input id="busca" type="search" placeholder="Buscar alimento (ex.: arroz, frango, banana)">
+    <div id="resultados" class="chips"></div>
+    <div id="itens"></div>
+  </div>
+  <div class="col">
+    <div class="prato-box">
+      <div id="donut"><div id="kcal">0<small>kcal</small></div></div>
+      <ul class="legenda">
+        <li><i class="c"></i>Carboidratos <b id="tc">0 g</b></li>
+        <li><i class="p"></i>Proteínas <b id="tp">0 g</b></li>
+        <li><i class="f"></i>Gorduras <b id="tf">0 g</b></li>
+      </ul>
+    </div>
+    <div class="salvar">
+      <select id="refeicao">
+        <option value="Café da manhã">Café da manhã</option>
+        <option value="Almoço">Almoço</option>
+        <option value="Lanche">Lanche</option>
+        <option value="Jantar">Jantar</option>
+      </select>
+      <button id="salvar" class="main">Salvar no diário de hoje</button>
+    </div>
+  </div>
+</section>
+
+<section id="dieta" hidden>
+  <div class="col">
+    <h2>Seu perfil</h2>
+    <form id="perfil" class="grade">
+      <label>Sexo<select name="sexo"><option value="m">Masculino</option><option value="f">Feminino</option></select></label>
+      <label>Idade<input name="idade" type="number" min="12" max="90" required></label>
+      <label>Peso (kg)<input name="peso" type="number" min="30" max="250" step="0.1" required></label>
+      <label>Altura (cm)<input name="alt" type="number" min="120" max="230" required></label>
+      <label>Atividade
+        <select name="ativ">
+          <option value="1.2">Sedentário</option>
+          <option value="1.375">Leve (1–3x/sem)</option>
+          <option value="1.55">Moderada (3–5x/sem)</option>
+          <option value="1.725">Intensa (6–7x/sem)</option>
+        </select></label>
+      <label>Objetivo
+        <select name="obj">
+          <option value="emagrecer">Emagrecer</option>
+          <option value="manter">Manter peso</option>
+          <option value="hipertrofia">Ganhar massa</option>
+        </select></label>
+      <button class="main" type="submit">Calcular metas</button>
+    </form>
+    <div id="metas"></div>
+  </div>
+  <div class="col">
+    <h2>Hoje</h2>
+    <div id="barras"></div>
+    <div id="diario"></div>
+    <h2>Metas por refeição</h2>
+    <div id="porrefeicao"></div>
+  </div>
+</section>
+
+<section id="treino" hidden>
+  <div class="col cheia">
+    <h2>Monte sua semana</h2>
+    <div class="grade linha">
+      <label>Dias de treino<select id="ndias"><option>3</option><option selected>4</option><option>5</option><option>6</option></select></label>
+      <label>Objetivo<select id="tobj"><option value="emagrecer">Emagrecer</option><option value="manter">Manter</option><option value="hipertrofia" selected>Ganhar massa</option></select></label>
+      <button id="gerar" class="main">Gerar plano</button>
+    </div>
+    <p id="prog" class="nota"></p>
+    <div id="semana"></div>
+  </div>
+</section>
+</main>
+
+<footer>Projeto educativo. Os valores são estimativas e não substituem a orientação de nutricionista, médico ou educador físico.</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.17.0/dist/tf.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/mobilenet@2.1.1/dist/mobilenet.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
